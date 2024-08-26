@@ -1,16 +1,20 @@
 ---
+import MainLayouts from "../layouts/MainLayout.astro";
 
+//Server Only
+const name = "Christopher Alexander Aedo Pizarro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayouts title="Home Page" />
+<h1>{name}</h1>
+
+<p>Momento actual : {new Date().toLocaleTimeString()}</p>
+
+<p id="current-time"></p>
+
+<script>
+  //Client Only
+  const p = document.querySelector("#current-time") as HTMLParagraphElement;
+
+  p.innerText = `Momento actual real: ${new Date().toLocaleTimeString()}`;
+</script>
